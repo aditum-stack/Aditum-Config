@@ -1,6 +1,29 @@
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
-.idea/Aditum-Config.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/workspace.xml
+*.class
+.DS_Store
+application.pid
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Eclipse
+.classpath
+.project
+target
+.settings
+
+# Idea
+.idea
+*.iml
+
+# git
+*.orig
+
+# build related
+apollo-portal.jar
+apollo-service.jar
+*.log
+*.gz
+*.pid
