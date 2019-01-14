@@ -37,6 +37,7 @@
     
     namespace是代码的一部分，这个就看你怎么弄了，写死在代码中也可以，放在application.yml中也可以
     
+    
 (1) 在resources下建立META-INF/app.properties文件，写入 app.id=AditumConfig
 
 (2) 在server.properties中指定开发环境
@@ -60,7 +61,11 @@
         # 使用公共命名空间和微服务私有命名空间
         namespaces: application
         
-**注意：** 若远程访问云主机，则外网地址会被解析成内网地址无法访问，需使用JVM启动参数： [-Dapollo.configService=http://47.106.11.84:8080] 避免进行内网解析
+**注意：** 若远程访问云主机，则外网地址会被解析成内网地址无法访问，需使用JVM启动参数： 
+
+[-Dapollo.configService=http://47.106.11.84:8080] 
+
+避免进行内网解析
 
 ### 访问apollo配置参数
 
@@ -73,6 +78,30 @@
       
 2. java程序：
 
-使用 @Value('${配置项key:获取失败的默认值}')进行访问
+使用 @Value('${配置项key:获取失败的默认值}')进行访问，例如
+
+```java
+/**
+ * Apollo 配置获取客户端
+ */
+@Configuration
+@EnableApolloConfig
+public class ApolloConfigBean {
+
+    @Value("${timeout:20}")
+    private int timeout;
+
+    public int getTimeout() {
+        return timeout;
+    }
+
+    @Override
+    public String toString() {
+        return "ApolloConfigBean{" +
+                "timeout=" + timeout +
+                '}';
+    }
+}
+```
 
 
